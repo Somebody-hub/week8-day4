@@ -1,0 +1,20 @@
+### Подготовка: создать задачу
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{"title": "Dirty checking test", "description": "desc", "priority": "HIGH"}
+
+### Смена статуса. Ожидаем: 200, status = IN_PROGRESS
+PATCH http://localhost:8080/api/tasks/1/status
+Content-Type: application/json
+
+{"status": "IN_PROGRESS"}
+
+### Контроль: тот же статус ещё раз. Ожидаем: 200, а в логе НЕТ update
+PATCH http://localhost:8080/api/tasks/1/status
+Content-Type: application/json
+
+{"status": "IN_PROGRESS"}
+
+### Проверка, что изменение реально сохранилось. Ожидаем: status = IN_PROGRESS
+GET http://localhost:8080/api/tasks/1

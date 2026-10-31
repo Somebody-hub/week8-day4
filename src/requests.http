@@ -1,0 +1,68 @@
+### 1. Создание первой задачи
+# Ожидаемый ответ: 201 Created + Location: /api/tasks/1
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Изучить REST API в Spring Boot",
+  "description": "Завершить мини-проект 7-й недели",
+  "priority": "HIGH"
+}
+
+### 2. Создание второй задачи
+# Ожидаемый ответ: 201 Created + Location: /api/tasks/2
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Подготовить отчет",
+  "description": "Сделать скриншоты тестов",
+  "priority": "MEDIUM"
+}
+
+### 3. Получение всех задач
+# Ожидаемый ответ: 200 OK (список из 2 задач)
+GET http://localhost:8080/api/tasks
+
+### 4. Получение задачи по ID
+# Ожидаемый ответ: 200 OK (объект задачи с ID 1)
+GET http://localhost:8080/api/tasks/1
+
+### 5. Добавление тега к первой задаче
+# Ожидаемый ответ: 200 OK (массив тегов: ["backend"])
+POST http://localhost:8080/api/tasks/1/tags
+Content-Type: application/json
+
+{
+  "tag": "backend"
+}
+
+### 6. Обновление статуса первой задачи
+# Ожидаемый ответ: 200 OK (статус IN_PROGRESS)
+PATCH http://localhost:8080/api/tasks/1/status
+Content-Type: application/json
+
+{
+  "status": "IN_PROGRESS"
+}
+
+### 7. Обновление приоритета первой задачи
+# Ожидаемый ответ: 200 OK (приоритет LOW)
+PATCH http://localhost:8080/api/tasks/1/priority
+Content-Type: application/json
+
+{
+  "priority": "LOW"
+}
+
+### 8. Фильтрация задач по статусу и тегу
+# Ожидаемый ответ: 200 OK (массив с задачей ID 1)
+GET http://localhost:8080/api/tasks?status=IN_PROGRESS&tag=backend
+
+### 9. Получение статистики
+# Ожидаемый ответ: 200 OK (подсчет по статусам и приоритетам)
+GET http://localhost:8080/api/tasks/statistics
+
+### 10. Удаление второй задачи
+# Ожидаемый ответ: 204 No Content
+DELETE http://localhost:8080/api/tasks/2

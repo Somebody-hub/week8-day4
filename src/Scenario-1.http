@@ -1,0 +1,11 @@
+### Сценарий 1: сбой посередине. Ожидание: 500, в базе ничего не осталось
+POST http://localhost:8080/api/tasks/scenario1?flag=true
+Content-Type: application/json
+
+{"title": "Rollback test", "description": "desc", "priority": "HIGH"}
+
+### Сценарий 1: без сбоя, для сравнения. Ожидание: 200, теги a и b
+POST http://localhost:8080/api/tasks/scenario1?flag=false
+Content-Type: application/json
+{"title": "Commit test", "description": "desc", "priority": "HIGH"}
+

@@ -1,0 +1,14 @@
+### Сценарий 2: Подготовка: создать задачу
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{"title": "ReadOnly test", "description": "desc", "priority": "HIGH"}
+
+### Читающий. В логе: Creating new transaction ... readOnly
+GET http://localhost:8080/api/tasks
+
+### Читающий. В логе: то же, readOnly
+GET http://localhost:8080/api/tasks/1
+
+### Читающий. В логе: то же, readOnly
+GET http://localhost:8080/api/tasks/statistics

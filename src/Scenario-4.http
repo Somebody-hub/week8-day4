@@ -1,0 +1,11 @@
+### Подготовка: создать задачу
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{"title": "Lazy test", "description": "desc", "priority": "HIGH"}
+
+### Ожидаем: 500 (задача существует, теги не загружены)
+GET http://localhost:8080/api/tasks/1
+
+### Для сравнения. Ожидаем: 200 (здесь теги загружены через @EntityGraph)
+GET http://localhost:8080/api/tasks
